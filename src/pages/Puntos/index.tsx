@@ -6,14 +6,7 @@ import Actions from '@components/whiteboard/Actions';
 import usePoints from './hooks/usePoints';
 
 const Puntos = () => {
-  const {
-    undo,
-    redo,
-    points,
-    addPoint,
-    hasUndo,
-    hasRedo,
-  } = usePoints();
+  const { undo, redo, points, addPoint, hasUndo, hasRedo } = usePoints();
 
   return (
     <MainLayout>
@@ -29,10 +22,7 @@ const Puntos = () => {
         />
       </div>
       <div className=''>
-        <Whiteboard
-          points={points}
-          addPoint={addPoint}
-        />
+        <Whiteboard points={points} addPoint={addPoint} />
       </div>
     </MainLayout>
   );

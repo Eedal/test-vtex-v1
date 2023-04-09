@@ -4,27 +4,8 @@ import httpService from 'services/http-service';
 
 const usePoints = () => {
   const [myPoints, setMyPoints] = useState<Point[]>([]);
-
   const [hasUndo, setHasUndo] = useState(false);
   const [hasRedo, setHasRedo] = useState(false);
-
-  useEffect(() => {
-    const fetchAllPoints = async () => {
-      try {
-        const {
-          data: { points, hasUndo: hasUndoValue, hasRedo: hasRedoValue },
-        } = await httpService.get<PointResponse>('/api/point');
-
-        setHasUndo(hasUndoValue);
-
-        setHasRedo(hasRedoValue);
-        setMyPoints(points);
-      } catch (error) {
-        console.log({ error });
-      }
-    };
-    fetchAllPoints();
-  }, []);
 
   const addPoint = async (payload: Point) => {
     try {
@@ -62,6 +43,39 @@ const usePoints = () => {
   const redo = async () => {
     undoRedo('/api/point/redo');
   };
+
+  useEffect(() => {
+    const fetchAllPoints = async () => {
+      try {
+        const {
+          data: { points, hasUndo: hasUndoValue, hasRedo: hasRedoValue },
+        } = await httpService.get<PointResponse>('/api/point');
+
+        setHasUndo(hasUndoValue);
+        setHasRedo(hasRedoValue);
+        setMyPoints(points);
+      } catch (error) {
+        console.log({ error });
+      }
+    };
+    fetchAllPoints();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === 'z') {
+        undo();
+        console.log('Control + Z presionado');
+      }
+
+      if (event.ctrlKey && event.key === 'y') {
+        redo();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return {
     undo,

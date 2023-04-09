@@ -13,7 +13,7 @@ interface ActionsProps {
 
 const Actions = ({ undo, redo, undoDisabled, redoDisabled }: ActionsProps) => {
   return (
-    <section className='bg-gray-100 py-2 flex items-center px-5 '>
+    <section className='bg-gray-100 py-2 flex items-center px-5 gap-2'>
       <button
         type='button'
         className='relative group '
@@ -23,10 +23,10 @@ const Actions = ({ undo, redo, undoDisabled, redoDisabled }: ActionsProps) => {
         <ArrowUturnLeftIcon
           className={`w-8 border border-gray-800 rounded-full p-1 cursor-pointer ${
             !undoDisabled && 'bg-blue-300'
-          }  duration-300 mr-2`}
+          }  duration-300`}
         />
         <span className='absolute w-auto p-2 m-2 min-w-max -left-6 -top-11 rounded-md text-white bg-gray-900 text-xs font-bold transition-all duration-100 scale-0 origin-left group-hover:scale-100'>
-          Re-hacer
+          Deshacer
         </span>
       </button>
       <button
@@ -44,6 +44,7 @@ const Actions = ({ undo, redo, undoDisabled, redoDisabled }: ActionsProps) => {
           Re-crear
         </span>
       </button>
+      <p>Puedes usar (control + z) para Deshacer  y (control + y) para Re-crear</p>
     </section>
   );
 };
