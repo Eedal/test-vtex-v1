@@ -1,0 +1,35 @@
+1. create next-app
+
+2. config eslint
+  copy info eslint rules in drive
+  parse js to json online
+  copy and paste in .eslintrc.json
+  corre npm run lint 
+
+  instala todas las depetencias que se extienden y prueba que funcione
+  npm i -D prettier eslint-config-prettier eslint-config-airbnbt eslint-config-airbnb-typescript
+
+3. configura los path en tsconfig.json
+  agrega "baseUrl": "./src", y puedes definir algo así "@components/*": ["components/*"],
+
+4. Crea la pagina puntos
+
+5. configura el main layout con un header, children y footer
+
+6. configura el header (primero solo agrega el logo)
+  descarga un logo de vtex y otra de un icono de usuario y agregalas en /public/assets/img
+  usalas en <Image src="/assets/img/nombre.png>
+
+  instala npm install @heroicons/react para agregar el icono de logout
+
+
+
+7. haz la parte de pintar
+
+8. haz que persista, instala axios
+
+9. configura una db fake db.json 
+  npm i json-server --save-dev
+  npx json-server --port 3001 --watch db.json
+
+[verifica que eslint esté funcionando]
