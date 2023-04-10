@@ -5,11 +5,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
+INSTALATION
+npm install
+
+connect to mongo db in uri localhost, port 27017
+create db vtex-test and collection points
+
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
